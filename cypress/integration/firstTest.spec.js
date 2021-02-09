@@ -148,9 +148,6 @@ describe("Our first suite", function () {
   });
 
   it.only("assert property", () => {
-    cy.visit("/");
-    cy.contains("Forms").click();
-    cy.contains("Datepicker").click();
 
     function selectDayFromCurrent(day) {
       let date = new Date();
@@ -172,6 +169,11 @@ describe("Our first suite", function () {
         });
       return dateAssert;
     }
+
+    cy.visit("/");
+    cy.contains("Forms").click();
+    cy.contains("Datepicker").click();
+
     cy.contains("nb-card", "Common Datepicker")
       .find("input")
       .then((input) => {
@@ -280,6 +282,7 @@ describe("Our first suite", function () {
         cy.wrap(tableColumns).eq(2).should("contain", "Artem");
         cy.wrap(tableColumns).eq(3).should("contain", "Bondar");
       });
+      
     //3
 
     const age = [20, 30, 40, 200];
